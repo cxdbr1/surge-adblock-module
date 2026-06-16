@@ -1,0 +1,97 @@
+#!name=AdBlock Basic
+#!desc=屏蔽常见广告、跟踪、统计与隐私采集请求。适用于 Surge 远程模块订阅。
+#!author=cxdbr1
+#!homepage=https://github.com/cxdbr1/surge-adblock-module
+#!date=2026-06-16
+
+[Rule]
+# 常见广告与跟踪域名
+DOMAIN-SUFFIX,doubleclick.net,REJECT
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,googleadservices.com,REJECT
+DOMAIN-SUFFIX,adservice.google.com,REJECT
+DOMAIN-SUFFIX,adsystem.com,REJECT
+DOMAIN-SUFFIX,ads-twitter.com,REJECT
+DOMAIN-SUFFIX,ads.linkedin.com,REJECT
+DOMAIN-SUFFIX,ads.facebook.com,REJECT
+DOMAIN-SUFFIX,facebook.net,REJECT
+DOMAIN-SUFFIX,scorecardresearch.com,REJECT
+DOMAIN-SUFFIX,quantserve.com,REJECT
+DOMAIN-SUFFIX,moatads.com,REJECT
+DOMAIN-SUFFIX,taboola.com,REJECT
+DOMAIN-SUFFIX,outbrain.com,REJECT
+DOMAIN-SUFFIX,criteo.com,REJECT
+DOMAIN-SUFFIX,criteo.net,REJECT
+DOMAIN-SUFFIX,adnxs.com,REJECT
+DOMAIN-SUFFIX,rubiconproject.com,REJECT
+DOMAIN-SUFFIX,openx.net,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,smartadserver.com,REJECT
+DOMAIN-SUFFIX,serving-sys.com,REJECT
+DOMAIN-SUFFIX,mathtag.com,REJECT
+DOMAIN-SUFFIX,casalemedia.com,REJECT
+DOMAIN-SUFFIX,zedo.com,REJECT
+DOMAIN-SUFFIX,adsrvr.org,REJECT
+DOMAIN-SUFFIX,rlcdn.com,REJECT
+DOMAIN-SUFFIX,bluekai.com,REJECT
+DOMAIN-SUFFIX,demdex.net,REJECT
+DOMAIN-SUFFIX,omtrdc.net,REJECT
+DOMAIN-SUFFIX,everesttech.net,REJECT
+DOMAIN-SUFFIX,appsflyer.com,REJECT
+DOMAIN-SUFFIX,adjust.com,REJECT
+DOMAIN-SUFFIX,branch.io,REJECT
+DOMAIN-SUFFIX,kochava.com,REJECT
+DOMAIN-SUFFIX,mixpanel.com,REJECT
+DOMAIN-SUFFIX,amplitude.com,REJECT
+DOMAIN-SUFFIX,segment.io,REJECT
+DOMAIN-SUFFIX,hotjar.com,REJECT
+DOMAIN-SUFFIX,fullstory.com,REJECT
+DOMAIN-SUFFIX,bugsnag.com,REJECT
+DOMAIN-SUFFIX,sentry.io,REJECT
+
+# Apple / iOS 常见广告归因与分析
+DOMAIN-SUFFIX,iadsdk.apple.com,REJECT
+DOMAIN-SUFFIX,metrics.icloud.com,REJECT
+DOMAIN-SUFFIX,metrics.mzstatic.com,REJECT
+DOMAIN-SUFFIX,ads.internal.unity3d.com,REJECT
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT
+
+# 国内常见广告与统计
+DOMAIN-SUFFIX,admaster.com.cn,REJECT
+DOMAIN-SUFFIX,adsage.cn,REJECT
+DOMAIN-SUFFIX,adsmogo.com,REJECT
+DOMAIN-SUFFIX,duapps.com,REJECT
+DOMAIN-SUFFIX,umeng.com,REJECT
+DOMAIN-SUFFIX,umengcloud.com,REJECT
+DOMAIN-SUFFIX,cnzz.com,REJECT
+DOMAIN-SUFFIX,tanx.com,REJECT
+DOMAIN-SUFFIX,alimama.com,REJECT
+DOMAIN-SUFFIX,mmstat.com,REJECT
+DOMAIN-SUFFIX,irs01.com,REJECT
+DOMAIN-SUFFIX,miidi.net,REJECT
+DOMAIN-SUFFIX,guanggao.com,REJECT
+DOMAIN-SUFFIX,adview.cn,REJECT
+DOMAIN-SUFFIX,adups.com,REJECT
+DOMAIN-SUFFIX,domob.cn,REJECT
+DOMAIN-SUFFIX,mediav.com,REJECT
+DOMAIN-SUFFIX,agrantsem.com,REJECT
+DOMAIN-SUFFIX,ipinyou.com,REJECT
+DOMAIN-SUFFIX,wrating.com,REJECT
+DOMAIN-SUFFIX,oadz.com,REJECT
+DOMAIN-SUFFIX,adchina.com,REJECT
+
+# 常见广告关键词域名兜底
+DOMAIN-KEYWORD,adservice,REJECT
+DOMAIN-KEYWORD,adsystem,REJECT
+DOMAIN-KEYWORD,analytics,REJECT
+DOMAIN-KEYWORD,tracking,REJECT
+DOMAIN-KEYWORD,tracker,REJECT
+
+[URL Rewrite]
+# 常见广告请求路径拦截
+^https?:\/\/[^\/]+\/.*\/(ads?|adserver|advert|advertise|analytics|tracking|tracker)\/ - reject
+^https?:\/\/[^\/]+\/.*[?&](adid|ad_id|advertising_id|tracker|tracking)= - reject
+
+[MITM]
+# 本模块默认不启用 MITM，避免影响兼容性。
+hostname = %APPEND%
