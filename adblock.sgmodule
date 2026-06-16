@@ -1,5 +1,5 @@
 #!name=AdBlock Basic
-#!desc=屏蔽常见广告、跟踪、统计与隐私采集请求。适用于 Surge 远程模块订阅。
+#!desc=屏蔽常见广告、跟踪、统计与隐私采集请求，并为广告相关域名启用 MITM 以支持 HTTPS URL Rewrite。
 #!author=cxdbr1
 #!homepage=https://github.com/cxdbr1/surge-adblock-module
 #!date=2026-06-16
@@ -93,5 +93,5 @@ DOMAIN-KEYWORD,tracker,REJECT
 ^https?:\/\/[^\/]+\/.*[?&](adid|ad_id|advertising_id|tracker|tracking)= - reject
 
 [MITM]
-# 本模块默认不启用 MITM，避免影响兼容性。
-hostname = %APPEND%
+# 仅对广告/统计相关域名启用 MITM，避免全局解密造成兼容性问题。
+hostname = %APPEND% *.doubleclick.net, *.googlesyndication.com, *.googleadservices.com, adservice.google.com, *.ads-twitter.com, *.ads.linkedin.com, *.ads.facebook.com, *.facebook.net, *.scorecardresearch.com, *.quantserve.com, *.moatads.com, *.taboola.com, *.outbrain.com, *.criteo.com, *.criteo.net, *.adnxs.com, *.rubiconproject.com, *.openx.net, *.pubmatic.com, *.smartadserver.com, *.serving-sys.com, *.mathtag.com, *.casalemedia.com, *.zedo.com, *.adsrvr.org, *.rlcdn.com, *.bluekai.com, *.demdex.net, *.omtrdc.net, *.everesttech.net, *.appsflyer.com, *.adjust.com, *.branch.io, *.kochava.com, *.mixpanel.com, *.amplitude.com, *.segment.io, *.hotjar.com, *.fullstory.com, *.bugsnag.com, *.sentry.io, iadsdk.apple.com, metrics.icloud.com, metrics.mzstatic.com, *.unity3d.com, *.admaster.com.cn, *.adsage.cn, *.adsmogo.com, *.duapps.com, *.umeng.com, *.umengcloud.com, *.cnzz.com, *.tanx.com, *.alimama.com, *.mmstat.com, *.irs01.com, *.miidi.net, *.guanggao.com, *.adview.cn, *.adups.com, *.domob.cn, *.mediav.com, *.agrantsem.com, *.ipinyou.com, *.wrating.com, *.oadz.com, *.adchina.com

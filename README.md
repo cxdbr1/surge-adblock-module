@@ -14,4 +14,4 @@ Surge → Modules → Install Module from URL，粘贴上面的远程地址。
 
 ## 说明
 
-本模块默认不启用 MITM，仅使用规则与 URL Rewrite 做基础屏蔽，以减少兼容性问题。
+本模块已为广告/统计相关域名启用 MITM，以支持 HTTPS URL Rewrite；未使用全局 `*`，避免对正常网站造成兼容性问题。
